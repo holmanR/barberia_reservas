@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <title>Barbería</title>
+</head>
+<body>
+    <header>
+        <div class="header-info">
+            <h1 style="color: white; text-align: center; font-size: 2.5em; margin-bottom: 20px;">Barber Shop</h1>
+            <div style="text-align: center;">
+                <p style="color: white; margin-top: 10px;">Calle 22 #12 - 70</p>
+                <p style="color: white; display: inline; margin-left: 20px; margin-top: 20px; cursor: pointer;" onclick="showInfo()">Más Información</p>
+            </div>
+        </div>
+    </header>
+    <div class="card-container" id="card-container">
+        <div class="card">
+            <h3>Corte de Cabello</h3>
+            <p>Descripción del servicio de corte de cabello.</p>
+            <button onclick="window.location.href='turnos.html?service=Corte de Cabello'">Reservar</button>
+        </div>
+        <div class="card">
+            <h3>Barba</h3>
+            <p>Descripción del servicio de barba.</p>
+            <button onclick="window.location.href='turnos.html?service=Barba'">Reservar</button>
+        </div>
+        <div class="card">
+            <h3>Cejas</h3>
+            <p>Descripción del servicio de cejas.</p>
+            <button onclick="window.location.href='turnos.html?service=Cejas'">Reservar</button>
+        </div>
+        <div class="card">
+            <h3>Corte + Barba</h3>
+            <p>Descripción del servicio de corte y barba.</p>
+            <button onclick="window.location.href='turnos.html?service=Corte + Barba'">Reservar</button>
+        </div>
+        <div class="card">
+            <h3>Corte + Cejas</h3>
+            <p>Descripción del servicio de corte y cejas.</p>
+            <button onclick="window.location.href='turnos.html?service=Corte + Cejas'">Reservar</button>
+        </div>
+    </div>
+    <footer>
+        <p>Barber Shop. Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        function showInfo() {
+            alert("¡Tenemos Más de Diez Años de Experiencia! ¡Nos Esforzamos para Brindar Atención única y Personalizada, por lo que escuchamos tus necesidades y Preferencias!");
+        }
+    </script>
+</body>
+</html>

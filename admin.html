@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Admin - Barbería</title>
+</head>
+<body>
+    <h1 style="color: #333; text-align: center;">Agregar Turnos</h1>
+    <form id="appointmentForm">
+        <label for="service">Servicio:</label>
+        <select id="service" required>
+            <option value="Corte de Cabello">Corte de Cabello</option>
+            <option value="Barba">Barba</option>
+            <option value="Cejas">Cejas</option>
+            <option value="Corte + Barba">Corte + Barba</option>
+            <option value="Corte + Cejas">Corte + Cejas</option>
+        </select>
+        <br>
+        <label for="appointment">Turno Disponible:</label>
+        <input type="text" id="appointment" placeholder="Ej: Lunes 10:00 AM" required>
+        <br>
+        <button type="submit" style="background-color: #007bff; color: white; border: none; cursor: pointer;">Agregar Turno</button>
+    </form>
+    <h2 style="margin-top: 20px; text-align: center;">Turnos Reservados</h2>
+    <div id="reservedAppointments" style="text-align: center;"></div>
+    <script>
+        function displayReservedAppointments() {
+            const reservedAppointments = JSON.parse(localStorage.getItem('reservations')) || {};
+            const reservedDiv = document.getElementById('reservedAppointments');
+
+            if (Object.keys(reservedAppointments).length === 0) {
+                reservedDiv.innerHTML = '<p>No tienes turnos reservados.</p>';
+                return;
+            }
+
+            for (const service in reservedAppointments) {
+                reservedAppointments[service].forEach(appointment => {
+                    reservedDiv.innerHTML += `
+                        <strong>${service}:</strong> ${appointment} 
+                        <button onclick="removeReservation('${service}', '${appointment}')">Eliminar</button><br>
+                    `;
+                });
+            }
+        }
+
+        function removeReservation(service, appointment) {
+            const reservations = JSON.parse(localStorage.getItem('reservations')) || {};
+            if (reservations[service]) {
+                reservations[service] = reservations[service].filter(a => a !== appointment);
+                if (reservations[service].length === 0) {
+                    delete reservations[service]; // Eliminar el servicio si no hay más reservas
+                }
+                localStorage.setItem('reservations', JSON.stringify(reservations));
+                displayReservedAppointments(); // Actualizar la visualización
+            }
+        }
+
+        document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const service = document.getElementById('service').value;
+            const appointment = document.getElementById('appointment').value;
+
+            // Verificar si ya existe un turno en la misma hora
+            const appointments = JSON.parse(localStorage.getItem('appointments')) || {};
+            if (Object.values(appointments).some(times => times.includes(appointment))) {
+                alert('Error: Ya existe un turno reservado a esta hora.');
+                return;
+            }
+
+            // Almacenar el turno en local storage
+            if (!appointments[service]) {
+                appointments[service] = [];
+            }
+            if (!appointments[service]) {
+                appointments[service] = [];
+            }
+            appointments[service].push(appointment);
+            localStorage.setItem('appointments', JSON.stringify(appointments));
+
+            alert('Turno agregado para ' + service);
+            document.getElementById('appointmentForm').reset();
+        });
+
+        displayReservedAppointments();
+        
+        document.getElementById('saveChanges').addEventListener('click', function() {
+            alert('Cambios guardados.');
+        });
+    </script>
+</body>
+</html>
