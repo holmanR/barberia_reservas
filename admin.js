@@ -1,7 +1,7 @@
 document.getElementById('add-turno-form').addEventListener('submit', function(event) {
     event.preventDefault();
     
-    // Validate form inputs
+    // Validar entradas del formulario
     const servicio = document.getElementById('servicio').value;
     const hora = document.getElementById('hora').value;
 
@@ -10,7 +10,7 @@ document.getElementById('add-turno-form').addEventListener('submit', function(ev
         return;
     }
 
-    // Show loading indicator
+    // Mostrar indicador de carga
     const loadingIndicator = document.getElementById('loading');
     loadingIndicator.style.display = 'block';
 
@@ -21,7 +21,11 @@ document.getElementById('add-turno-form').addEventListener('submit', function(ev
     }).then(response => response.json())
       .then(data => {
           alert(data.message);
-          // Hide loading indicator
+          // Ocultar indicador de carga
+          loadingIndicator.style.display = 'none';
+      }).catch(error => {
+          console.error('Error:', error);
+          alert('Error al agregar el turno. Inténtalo de nuevo.');
           loadingIndicator.style.display = 'none';
       });
 });
