@@ -16,6 +16,7 @@ header {
     right: 0;
     z-index: 1000;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTae5_irpq2g4Cb7BjNGk7rFTu35A7uY1QzLA&s');
@@ -38,16 +39,18 @@ header::before {
     z-index: 1;
 }
 
-h1 {
+header h1, header p {
     color: white;
     position: relative;
     z-index: 2;
     text-align: center;
-    margin: 0;
+    margin: 5px 0;
+}
+
+h1 {
     font-size: 2.8em;
 }
 
-/* Media Queries para pantallas pequeñas */
 @media (max-width: 480px) {
     h1 {
         font-size: 2.2em;
@@ -76,7 +79,6 @@ h1 {
     transform: scale(1.05);
 }
 
-/* Diseño del footer */
 footer {
     text-align: center;
     margin-top: auto;
@@ -87,7 +89,6 @@ footer {
     bottom: 0;
 }
 
-/* Estilos de formularios */
 form {
     background: #fff;
     padding: 20px;
@@ -103,7 +104,6 @@ label {
     font-weight: bold;
 }
 
-/* Mejora en los botones */
 button {
     width: auto;
     padding: 10px 20px;
@@ -127,7 +127,6 @@ select, input[type="text"] {
     border-radius: 4px;
 }
 
-/* Contenedor de turnos disponibles */
 #availableAppointments {
     max-width: 600px;
     margin: 0 auto;
@@ -138,7 +137,6 @@ select, input[type="text"] {
     border-radius: 5px;
 }
 
-/* Media Queries para Responsividad */
 @media (max-width: 768px) {
     .card {
         width: 90%;
