@@ -1,6 +1,11 @@
 function showAvailableAppointments() {
     fetch('/turnos')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok: ' + response.statusText);
+            }
+            return response.json();
+        })
         .then(appointments => {
             const availableDiv = document.getElementById('availableAppointments');
             availableDiv.innerHTML = ''; // Limpiar contenido anterior
@@ -16,6 +21,8 @@ function showAvailableAppointments() {
         })
         .catch(error => {
             console.error('Error fetching appointments:', error);
+            const availableDiv = document.getElementById('availableAppointments');
+            availableDiv.innerHTML = 'Error al cargar los turnos. Inténtalo de nuevo más tarde.';
         });
 }
 
