@@ -23,17 +23,6 @@ header {
     text-align: center; /* Center the header content */
 }
 
-header::before {
-    content: ""; /* Create a pseudo-element */
-    position: absolute; /* Position it absolutely */
-    top: 0; /* Align to the top */
-    left: 0; /* Align to the left */
-    right: 0; /* Align to the right */
-    height: 100%; /* Set the height to cover the entire header */
-    background-color: rgba(0, 0, 0, 0.5); /* Set header background to a less opaque transparent black */
-    z-index: 1; /* Ensure the overlay is above the background image */
-}
-
 h1 {
     color: white; /* Set the color of the header title to white */
     position: relative; /* Position relative to ensure it is above the overlay */
@@ -48,23 +37,6 @@ h1 {
     h1 {
         font-size: 2.2em; /* Ajustar el tamaño de fuente para pantallas pequeñas */
     }
-}
-
-.header-info {
-    position: relative; /* Asegura que el texto esté en el flujo del documento */
-    z-index: 2; /* Asegura que el texto esté por encima del fondo */
-    margin-top: -20px; /* Mueve el texto hacia arriba */
-}
-
-.address {
-    color: white; /* Set text color to white */
-    text-align: center; /* Center the text */
-    position: relative; /* Position relative to ensure it is above the overlay */
-    z-index: 2; /* Ensure the text is above the overlay */
-}
-
-.address {
-    margin-top: 10px; /* Add some spacing above the address */
 }
 
 .card-container {
@@ -86,23 +58,6 @@ h1 {
 }
 .card:hover {
     transform: scale(1.05); /* Scale up the card on hover */
-}
-
-.card h3 {
-    margin: 10px 0;
-}
-
-.card button {
-    background-color: #007BFF; /* Color azul para todos los botones */
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 4px;
-}
-
-.card button:hover {
-    background-color: #0056b3; /* Azul más oscuro al pasar el cursor */
 }
 
 footer {
@@ -138,7 +93,7 @@ select, input[type="text"], button {
     border-radius: 4px;
 }
 
-#reservedAppointments {
+#availableAppointments {
     max-width: 600px; /* Set a maximum width for the appointments box */
     margin: 0 auto; /* Center the box */
     text-align: center;
