@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Admin - Barbería</title>
+    <style>
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <h1 style="color: #333; text-align: center;">Agregar Turnos</h1>
     <form id="add-turno-form">
         <label for="servicio">Servicio:</label>
-        <select id="servicio" required>
+        <select id="servicio" name="servicio" required>
             <option value="Corte de Cabello">Corte de Cabello</option>
             <option value="Barba">Barba</option>
             <option value="Cejas">Cejas</option>
@@ -19,13 +24,19 @@
         </select>
         <br>
         <label for="hora">Turno Disponible:</label>
-        <input type="text" id="hora" placeholder="Ej: Lunes 10:00 AM" required>
+        <input type="datetime-local" id="hora" name="hora" required>
         <br>
         <button type="submit" style="background-color: #007bff; color: white; border: none; cursor: pointer;">Agregar Turno</button>
     </form>
-    <div id="loading" style="display: none;">Cargando...</div>
+    <div id="loading" style="display: none; text-align: center;">Cargando...</div>
     <h2 style="margin-top: 20px; text-align: center;">Turnos Reservados</h2>
-    <div id="reservedAppointments" style="text-align: center;"></div>
+    <div id="reservedAppointments" class="turnos-container" style="text-align: center;" aria-live="polite"></div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Aquí puedes inicializar admin.js si necesitas eventos al cargar
+        });
+    </script>
     <script src="admin.js"></script>
 </body>
 </html>
