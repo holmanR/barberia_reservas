@@ -18,14 +18,17 @@ document.getElementById('add-turno-form').addEventListener('submit', function(ev
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ servicio, hora })
-    }).then(response => response.json())
-      .then(data => {
-          alert(data.message);
-          // Ocultar indicador de carga
-          loadingIndicator.style.display = 'none';
-      }).catch(error => {
-          console.error('Error:', error);
-          alert('Error al agregar el turno. Inténtalo de nuevo.');
-          loadingIndicator.style.display = 'none';
-      });
+    }).then(response => {
+        if (!response.ok) {
+            throw new Error('Error en la respuesta del servidor: ' + response.statusText);
+        }
+        return response.json();
+    }).then(data => {
+        alert(data.message);
+        loadingIndicator.style.display = 'none';
+    }).catch(error => {
+        console.error('Error:', error);
+        alert('Error al agregar el turno: ' + error.message);
+        loadingIndicator.style.display = 'none';
+    });
 });
