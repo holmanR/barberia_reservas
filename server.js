@@ -29,12 +29,6 @@ app.get('/turnos', (req, res) => {
             res.status(500).json({ error: err.message });
             return;
         }
-            res.status(500).json({ error: err.message });
-            return;
-        if (err) {
-            res.status(500).json({ error: err.message });
-            return;
-        }
         res.json(rows);
     });
 });
@@ -48,12 +42,6 @@ app.post('/reservar', (req, res) => {
             res.status(500).json({ error: err.message });
             return;
         }
-            res.status(500).json({ error: err.message });
-            return;
-        if (err) {
-            res.status(500).json({ error: err.message });
-            return;
-        }
         res.json({ message: 'Turno reservado con éxito' });
     });
 });
@@ -64,12 +52,6 @@ app.post('/agregar-turno', (req, res) => {
     db.run('INSERT INTO turnos (servicio, hora) VALUES (?, ?)', [servicio, hora], function (err) {
         if (err) {
             console.error('Error adding appointment:', err.message);
-            res.status(500).json({ error: err.message });
-            return;
-        }
-            res.status(500).json({ error: err.message });
-            return;
-        if (err) {
             res.status(500).json({ error: err.message });
             return;
         }
